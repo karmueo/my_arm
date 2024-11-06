@@ -215,16 +215,14 @@ def generate_launch_description():
     )
 
     # TODO: 3. RViz
+    rviz_config_file = os.path.join(this_pkg_share, "rviz", "gazebo.rviz")
     rviz_node = Node(
         condition=IfCondition(use_rviz),
         package="rviz2",
         executable="rviz2",
         name="rviz2",
         output="screen",
-        arguments=[
-            "-d",
-            "/home/xvshuo/work/scl/my_moveit_ws/src/my_arm/rviz/gazebo.rviz",
-        ],
+        arguments=["-d", rviz_config_file],
         parameters=[{"use_sim_time": use_sim_time}],
     )
     start_rviz_cmd = RegisterEventHandler(
