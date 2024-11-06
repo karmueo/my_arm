@@ -120,7 +120,9 @@ def generate_launch_description():
         ),
         condition=IfCondition(use_simulator),
         launch_arguments={
-            "world": "/home/xvshuo/work/scl/my_moveit_ws/src/my_arm/worlds/cylinder_perception_classic.world"
+            "world": os.path.join(
+                this_pkg_share, "worlds", "cylinder_perception_classic.world"
+            )
         }.items(),
     )
     # Start Gazebo client
@@ -133,9 +135,7 @@ def generate_launch_description():
 
     # TODO: 2. Spawn the robot
     # Subscribe to the joint states of the robot, and publish the 3D pose of each link.
-    doc = xacro.parse(
-        open("/home/xvshuo/work/scl/my_moveit_ws/src/my_arm/urdf/robot.urdf.xacro")
-    )
+    doc = xacro.parse(open(os.path.join(this_pkg_share, "urdf", "robot.urdf.xacro")))
     xacro.process_doc(doc)
     robot_description_config = doc.toxml()
     start_robot_state_publisher_cmd = Node(
