@@ -49,19 +49,33 @@
                 </state_interface>
                 <state_interface name="velocity"/>
             </joint>
+            <joint name="panda_hand_joint" type="fixed">
+                <parent link="wrist3_Link" />
+                <child link="panda_hand" />
+                <origin rpy="0 0 0" xyz="0 0 0.01" />
+            </joint>
+
             <joint name="panda_finger_joint1">
                 <command_interface name="position"/>
                 <state_interface name="position">
-                    <param name="initial_value">${initial_positions['panda_finger_joint1']}</param>
+                    <param name="initial_value">0.0</param>
                 </state_interface>
                 <state_interface name="velocity"/>
             </joint>
+            <!-- <joint name="panda_finger_joint2">
+                <param name="mimic">panda_finger_joint1</param>
+                <command_interface name="position"/>
+                <state_interface name="position">
+                    <param name="initial_value">0.0</param>
+                </state_interface>
+                <state_interface name="velocity"/>
+            </joint> -->
 
         </ros2_control>
 
         <gazebo>
             <plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">
-                <parameters>file://$(find my_arm)/config/ros2_controllers.yaml</parameters>
+                <parameters>$(find my_arm)/config/ros2_controllers.yaml</parameters>
             </plugin>
         </gazebo>
     </xacro:macro>

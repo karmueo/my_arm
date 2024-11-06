@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="aubo_i10">
+    <xacro:arg name="initial_positions_file" default="$(find my_arm)/config/initial_positions.yaml" />
+
+    <!-- Import aubo_i10 urdf file -->
+    <xacro:include filename="$(find my_arm)/urdf/aubo_i10.urdf.xacro" />
+
+    <!-- Import control_xacro -->
+    <xacro:include filename="$(find my_arm)/urdf/aubo_i10.ros2_control.xacro" />
+
+    <xacro:aubo_i10_ros2_control name="aubo_i10_ros2_control" initial_positions_file="$(arg initial_positions_file)"/>
+
+</robot>
