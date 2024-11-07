@@ -9,6 +9,7 @@
 ## 关于 <a name = "about"></a>
 
 使用 ROS 2 Control 和 Gazebo (经典版本也就是classic)创建和控制机械臂。
+![gazebo arm](https://github.com/karmueo/my_arm/blob/master/resources/gazebo%E4%BB%BF%E7%9C%9F.png)
 
 ## 入门指南 <a name = "getting_started"></a>
 
