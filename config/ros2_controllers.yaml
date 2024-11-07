@@ -32,6 +32,7 @@ gripper_controller:
   ros__parameters:
     joints:
       - panda_finger_joint1
+      - panda_finger_joint2
     command_interfaces:
       - position
     state_interfaces:
