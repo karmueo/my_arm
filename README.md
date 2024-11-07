@@ -83,4 +83,22 @@ ros2 topic pub --once /arm_controller/joint_trajectory trajectory_msgs/msg/Joint
         ]
     }"
 ```
+![结果](https://github.com/karmueo/my_arm/blob/master/resources/gazebo%E4%BB%BF%E7%9C%9F2.png)
 
+也可以控制夹爪打开
+```bash
+ros2 topic pub --once /gripper_controller/joint_trajectory trajectory_msgs/msg/JointTrajectory "{
+        joint_names: ['panda_finger_joint1'], 
+        points: [
+            {
+                positions: [0.8], 
+                velocities: [0.1],
+                time_from_start: {sec: 5, nanosec: 0}
+            }
+        ]
+    }"
+else
+    echo "Usage: $0 {move|reset|open|close}"
+    exit 1
+fi
+```
